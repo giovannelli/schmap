@@ -10,6 +10,6 @@ rvm:
 
 env:
   global:
-    - secure: "vEA20Th30yv5rqlMlV9kjF8R8F1L60IWtQ6C8VsZSyQXZwazRCI5iR0Bn4F0\neGy8USa8KP72Ia8jsuWrQgsTIqmxuSKVEdo5V0QLIoQrnM4lnJFwANZml+5X\ns2ZxJ3Lfpd+oAJWir4spbYvPkGxA0HMQbIOd9W3Co7wfsZxge0g="
-    - secure: "xs51S/+u10OBjjj/DOxFnTi1+0qxrou2cgfCUATTXUdgirbxgX75g31Ph0G7\nYCDKwRPoFom5MItjgkP9jk7jKK16JEawaICh87bDHDdRS7aacq9cUVOySWG1\nLHU4IeBeRABfsGERyeMDkYAI5DV78Xo8UY7rwlDYg72wiSnNefQ="
+    - secure: "hWFKfD9snPRtilFPQAUqGijfzl8BKa05T1yhU7zdslQrzLevccQQgH4+Gzod\n7BEy6x1KZq/CIKCZq04Nd36dthc3+dlzaviA1ljclQV2Qh8Se0G0S7VYrJrn\nwO0bmSvgInaS5ybX5E23EDPahYLjnkWT7B4OGMTa9MY8maFL90A="
+    - secure: "ffF6eC/SAT8MnnRGUw0N4MxZ6khthRurSeKgJZielQBylyJ55n8oBgR6Mhzb\nm6ZE+eGOM/Ww3BjV428M8QyjNvScqKxDNMw5hItCnGySpRd7J+mNgUh61Zjw\nEPhPrCfLoMolZyCOUAyiJwQCyc9OKQsYoSaKtyGWbXC6oiNgNv4="
     - TIMEOUT=1000
