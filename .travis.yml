@@ -7,3 +7,8 @@ rvm:
   - ree
   - 1.9.2
   - 1.9.3
+
+env:
+  global:
+    - secure: "bE27AHL0v9v3W9GS2rr3t8LzqJWZZlMkZApF7ihu8PUIgU+OZM0I0EDFSvMA\n56MkfVyRIG07/jig2D6fP2Eu+zqowscIpaJe12v0bv6xUq4pK8pjXODRZRFX\nokboEADas49OyOnnkLRhcAow3bFacdFoL/cv8ckR6MuYnABtkjM="
+    - TIMEOUT=1000

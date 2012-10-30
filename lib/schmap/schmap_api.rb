@@ -10,8 +10,8 @@ module Schmap
     
     def initialize(options = {})
       self.base_url = "https://www.schmap.it/api"
-      self.username = options[:username]
-      self.password = options[:password]
+      self.username = options[:username] || ENV["SCHMAP_USERNAME"]
+      self.password = options[:password] || ENV["SCHMAP_PASSWORD"]
       self.update_codes
     end
 
