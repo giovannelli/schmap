@@ -10,5 +10,6 @@ rvm:
 
 env:
   global:
-    - secure: "bE27AHL0v9v3W9GS2rr3t8LzqJWZZlMkZApF7ihu8PUIgU+OZM0I0EDFSvMA\n56MkfVyRIG07/jig2D6fP2Eu+zqowscIpaJe12v0bv6xUq4pK8pjXODRZRFX\nokboEADas49OyOnnkLRhcAow3bFacdFoL/cv8ckR6MuYnABtkjM="
+    - secure: "vEA20Th30yv5rqlMlV9kjF8R8F1L60IWtQ6C8VsZSyQXZwazRCI5iR0Bn4F0\neGy8USa8KP72Ia8jsuWrQgsTIqmxuSKVEdo5V0QLIoQrnM4lnJFwANZml+5X\ns2ZxJ3Lfpd+oAJWir4spbYvPkGxA0HMQbIOd9W3Co7wfsZxge0g="
+    - secure: "xs51S/+u10OBjjj/DOxFnTi1+0qxrou2cgfCUATTXUdgirbxgX75g31Ph0G7\nYCDKwRPoFom5MItjgkP9jk7jKK16JEawaICh87bDHDdRS7aacq9cUVOySWG1\nLHU4IeBeRABfsGERyeMDkYAI5DV78Xo8UY7rwlDYg72wiSnNefQ="
     - TIMEOUT=1000
