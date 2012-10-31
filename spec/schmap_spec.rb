@@ -9,7 +9,7 @@ describe Schmap::SchmapApi do
     users.size.should == 5000
     users.last[:twitter_id].should == "12339980"
   end
-  
+
   it "Passing twitter id should return all his followers and the last twitter_id should be 12339980" do
     twitter_id = "123005"
     client = Schmap::SchmapApi.new
@@ -17,7 +17,7 @@ describe Schmap::SchmapApi do
     users.size.should == 5000
     users.last[:twitter_id].should == "12339980"
   end
-  
+
   it "Passing twitter ids should return users info" do
     ids = ["12300001", "12300002"]
     client = Schmap::SchmapApi.new
@@ -26,7 +26,7 @@ describe Schmap::SchmapApi do
       user[:twitter_id].should == ids[i]
     end
   end
-  
+
   it "Passing twitter user_names should return users info" do
     screen_names = ["test00001", "test00002"]
     client = Schmap::SchmapApi.new

@@ -93,15 +93,24 @@ module Schmap
       when :get
         request = Net::HTTP::Get.new(uri.request_uri)
       end
-      
+
       request.set_form_data(params) if !params.empty?
       request.basic_auth  self.username, self.password
       response = http.request(request)
       begin
-        return JSON.parse(response.body)
+        parsed_response = JSON.parse(response.body)
+        if parsed_response["status"] == "Error"
+          raise Error, parsed_response["error_details"]
+        else
+          return parsed_response
+        end
       rescue Exception => e
-        error = Nokogiri::HTML(response.body)
-        raise Error, error.title
+        if e.is_a?(Error)
+          raise e
+        else
+          error = Nokogiri::HTML(response.body)
+          raise Error, error.title
+        end
       end
     end
   end
