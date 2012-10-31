@@ -8,9 +8,9 @@ Gem::Specification.new do |s|
   s.authors     = ["Duccio Giovannelli"]
   s.email       = ["giovannelli@extendi.it"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
-
+  s.description = %q{A Ruby interface to the Schmap API.}
+  s.summary     = s.description
+  s.test_files = Dir.glob("spec/**/*")
   s.rubyforge_project = "schmap"
 
   s.files         = `git ls-files`.split("\n")
@@ -20,6 +20,9 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec"
-  s.add_runtime_dependency "json"
-  s.add_runtime_dependency "nokogiri"
+  s.add_development_dependency 'yard'
+  s.add_dependency "json"
+  s.add_dependency "nokogiri"
+  s.add_dependency "active_support"
+  
 end
