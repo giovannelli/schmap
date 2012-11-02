@@ -1,14 +1,12 @@
 require 'spec_helper'
 
 describe Schmap::SchmapApi do
-
+  #TODO: In porgress
   it "Passing twitter return followers aggregate analysis" do
     screen_name = "testacc5k"
-    client = Schmap::SchmapApi.new
-    results = client.aggregate_followers_of_screen_name(screen_name)
+    client = Schmap::SchmapApi.new(:username => "face_apitest", :password => "886hj27ltar0")
+    results = client.aggregate_followers_of_screen_name(screen_name).first
     results[:section_total].should == 5000
-    results[:section_name].should == "Followed Accounts"
-    results[:analysis_id].should == "533649"
   end
   
   # it "Passing twitter id should return followers aggregate analysis" do
