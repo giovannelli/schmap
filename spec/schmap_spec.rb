@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Schmap::SchmapApi do
   #TODO: In porgress
+  
   it "Passing twitter return followers aggregate analysis" do
     screen_name = "testacc5k"
     client = Schmap::SchmapApi.new(:username => "face_apitest", :password => "886hj27ltar0")
