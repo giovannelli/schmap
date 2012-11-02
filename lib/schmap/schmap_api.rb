@@ -19,14 +19,14 @@ module Schmap
 
     #@!method followers_of_screen_name
     # These examples will return individual profiles of the 5,000 followers of the screen_name account.
-    def followers_of_screen_name(screen_name)
+    def individual_followers_of_screen_name(screen_name)
       params = { :for => "followers_of_screen_name", :data => screen_name.to_s }
       return self.get_individual_profiles(params) 
     end
 
     #@!method followers_of_twitter_id
     # These examples will return individual profiles of the 5,000 followers of the twitter_id account.
-    def followers_of_twitter_id(twitter_id)
+    def individual_followers_of_twitter_id(twitter_id)
       params = { :for =>  "followers_of_twitter_id", :data =>  twitter_id }
       return self.get_individual_profiles(params) 
     end
@@ -34,7 +34,7 @@ module Schmap
     #@!method list_of_screen_names
     # These examples will return individual profiles of the max 5,000 listed test accounts, whether specified by 
     # their screennames
-    def list_of_screen_names(screen_names_array = [])
+    def individual_list_of_screen_names(screen_names_array = [])
       params = { :for =>  "list_of_screen_names", :data =>  screen_names_array }
       return self.get_individual_profiles(params)
     end
@@ -42,7 +42,7 @@ module Schmap
     #@!method list_of_screen_names
     # These examples will return individual profiles of the max 5,000 listed test accounts, whether specified by 
     # their twitter_ids
-    def list_of_twitter_ids(twitter_ids_array = [])
+    def individual_list_of_twitter_ids(twitter_ids_array = [])
       params = { :for => "list_of_twitter_ids", :data =>  twitter_ids_array}
       return self.get_individual_profiles(params) 
     end
@@ -73,6 +73,63 @@ module Schmap
           end
         end
         return users
+    end
+
+    #@!method aggregate_followers_of_screen_name
+    # These examples will return aggregate analysis of the 5,000 followers of the screen_name account.
+    def aggregate_followers_of_screen_name(screen_name)
+      params = { :for => "followers_of_screen_name", :data => screen_name.to_s }
+      return self.get_aggregate_analysis(params) 
+    end
+
+    #@!method aggregate_followers_of_twitter_id
+    # These examples will return aggregate analysis profiles of the 5,000 followers of the twitter_id account.
+    def aggregate_followers_of_twitter_id(twitter_id)
+      params = { :for =>  "followers_of_twitter_id", :data =>  twitter_id }
+      return self.get_aggregate_analysis(params) 
+    end
+
+    #@!method aggregate_list_of_screen_names
+    # These examples will return aggregate analysis of the max 5,000 listed test accounts, whether specified by 
+    # their screennames
+    def aggregate_list_of_screen_names(screen_names_array = [])
+      params = { :for =>  "list_of_screen_names", :data =>  screen_names_array }
+      return self.get_aggregate_analysis(params)
+    end
+
+    #@!method aggregate_list_of_twitter_ids
+    # These examples will return aggregate analysis of the max 5,000 listed test accounts, whether specified by 
+    # their twitter_ids
+    def aggregate_list_of_twitter_ids(twitter_ids_array = [])
+      params = { :for => "list_of_twitter_ids", :data =>  twitter_ids_array}
+      return self.get_aggregate_analysis(params) 
+    end
+    
+    #@!method get_aggregate_analysis
+    # This API request returns aggregate analysis for a defined group of Twitter users, 
+    # either the followers of a Twitter account, or specified as a list (for instance, a list 
+    # of all users tweeting a certain brand name or keyword). 
+    # followers_of_screen_name, followers_of_twitter_id, list_of_screen_names, list_of_twitter_ids
+    
+    def get_aggregate_analysis(options = {})
+        pages ||= []
+        if options[:data].is_a?(Array) && !options[:data].empty?
+          options[:data] << "000000" if options[:data].size == 1
+          options[:data] = options[:data].join("|")
+        end
+        response = self.call(:post, "get_aggregate_analysis", options) 
+        if response["status"] == "pages_pending"
+          pages << get_individual_profiles(:for =>  "next_page_of_request_id")
+        else
+          pages << response
+        end
+        analysis_data ||= []
+        pages.collect do |page|
+          page["analysis"]["analysis_data"].collect do |analysis|
+            analysis_data << {:analysis_id => page["analysis"]["analysis_id"], :section_total => analysis["section_total"], :section_name => analysis["section_name"], :items => analysis["section_rows"].map{|row| {:name => Schmap::Code.code_to_value(row["code"]), :counter => row["num"]}} }
+          end
+        end
+        return analysis_data
     end
     
     #!@ method load_codes() load codes in memory

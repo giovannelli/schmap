@@ -12,6 +12,12 @@ module Schmap
       end
       return info
     end
+    
+    #!@ method code_to_value: return the code value
+    def self.code_to_value(pcode)
+      code = SchmapApi.codes[pcode]
+      return code.nil? ? nil : code["name"]
+    end
 
     #!@ method prepare_codes: create an optimized file where the key is the schmap code
     def self.prepare_codes
