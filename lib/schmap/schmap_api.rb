@@ -136,7 +136,7 @@ module Schmap
       if options[:paginated].present? && options[:paginated] && options[:request_id].present? 
         params = { :for => type, :request_id => options[:request_id] }
       else
-        params = { :for => type, :data => options[:value] }
+        params = { :for => type, :data => options[:values] }
       end
       return params
     end
