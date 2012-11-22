@@ -8,7 +8,7 @@ module Schmap
       codes_array = schmap_code.scan(/.{3}/)
       codes_array.collect do |code|
         result = SchmapApi.codes[code]
-        info.merge!(result["section"].to_s.downcase.gsub(" ", "_") => result["name"].to_s) if !result.nil?
+        info.merge!(result["section"].to_s.downcase.gsub(" ", "_").gsub("/", "_").gsub("-", "").gsub("__", "_") => result["name"].to_s) if !result.nil?
       end
       return info
     end
@@ -18,7 +18,12 @@ module Schmap
       code = SchmapApi.codes[pcode]
       return code.nil? ? nil : code["name"]
     end
-
+    
+    def self.get_unique_keys
+      optimized = JSON.parse(File.read(File.dirname(__FILE__) + "/../../data/optimized.json"))
+      return optimized.map{|a| a[1]["section"].to_s.downcase.gsub(" ", "_").gsub("/", "_").gsub("-", "").gsub("__", "_") }.uniq
+    end
+    
     #!@ method prepare_codes: create an optimized file where the key is the schmap code
     def self.prepare_codes
       mycodes = {}
@@ -34,5 +39,7 @@ module Schmap
       end
     end
   end
+  
+
 
 end
