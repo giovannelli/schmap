@@ -4,7 +4,9 @@ describe Schmap::SchmapApi do
 
   it "Check codes unique keys" do
     keys = Schmap::Code.get_unique_keys
-    keys.should == ["large_accounts_followed", "location_by_city", "first_language", "main_street_shop_at", "location_by_us_state", "main_street_eat_drink_at", "likes_and_interests", "categories_of_account_followed", "location_by_country", "miscellaneous_demographics", "age", "services_and_technologies", "gender", "professions", "number_of_accounts_followed", "main_street_dressed_by", "religion", "twitter_settings", "work_status", "twitter_activity", "race_ethnicity", "twitter_influence", "family_status", "account_type", "time_on_twitter"]
+    ["large_accounts_followed", "location_by_city", "first_language", "main_street_shop_at", "location_by_us_state", "main_street_eat_drink_at", "likes_and_interests", "categories_of_account_followed", "location_by_country", "miscellaneous_demographics", "age", "services_and_technologies", "gender", "professions", "number_of_accounts_followed", "main_street_dressed_by", "religion", "twitter_settings", "work_status", "twitter_activity", "race_ethnicity", "twitter_influence", "family_status", "account_type", "time_on_twitter"].collect do |key|
+      keys.include?(key).should == true
+    end
   end
   
   it "Passing twitter return followers aggregate analysis" do
